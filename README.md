@@ -31,7 +31,29 @@
 
 ## II. Datasets
 + https://www.kaggle.com/datasets/iabhishekofficial/mobile-price-classification
-+ 학습 데이터는 kaggle의 Datasets을 사용할 예정이며 두 개의 csv 파일이 주어집니다. 각 csv 파일은 21개의 column으로 이루어져 있습니다.
++ 학습 데이터는 kaggle의 Datasets을 사용할 예정이며 두 개의 csv 파일이 주어집니다. 각 csv 파일은 20개의 Column으로 이루어져 있습니다. 색인을 포함하여 총 21개의 Column을 가지게 됩니다. 각각의 Column은 다음과 같습니다.
+
+  battery_power     : 배터리가 한번에 저장할 수 있는 총에너지 양 (mAh)
+  blue              : Bluetooth 기능의 제공여부 (0 or 1)
+  clock_speed       : Microprocessor가 명령을 실행하는 속도
+  dual_sim          : Dual Sim 기능의 제공여부 (0 or 1)
+  fc                : 전면 카메라의 성능 (Mega Pixel)
+  four_g            : 4G 통신의 제공여부 (0 or 1)
+  int_memory        : 내장 메모리의 용량 (GB)
+  m_dep             : 모바일 기기의 두께 (cm)
+  mobile_wt         : 모바일 기기의 무게 (g)
+  n_cores           : 프로세서의 코어 개수
+  pc                : 후면 카메라의 성능 (Mega Pixel)
+  px_height         : 높이 해상도 (Pixel)
+  px_width          : 폭 해상도 (Pixel)
+  ram               : RAM 성능 (MB)
+  sc_h              : 스크린 높이 (cm)
+  sc_w              : 스크린 폭 (cm)
+  talk_time         : 배터리 최대 지속시간
+  three_g           : 3G 통신의 제공여부 (0 or 1)
+  touch_screen      : 터치 스크린 제공여부 (0 or 1)
+  wifi              : WIFI 기능 제공여부 (0 or 1)
+  price_range       : 해당 모바일 기기의 가격이 속한 범위
 
 ## III. Methodology
 + Explaining your choice of algorithms (methods)
