@@ -55,6 +55,9 @@
           wifi              : WIFI 기능 제공여부 (0 or 1)
           price_range       : 해당 모바일 기기의 가격이 속한 범위
 
+![1](https://user-images.githubusercontent.com/91457152/204254565-88a3eca5-a554-4234-a0a3-01189147e02b.png)
+
+
 ## III. Methodology
 + Explaining your choice of algorithms (methods)
 + Explaining features (if any)
