@@ -31,7 +31,7 @@
 
 ## II. Datasets
 + https://www.kaggle.com/datasets/iabhishekofficial/mobile-price-classification
-+ 학습 데이터는 kaggle의 Datasets을 사용할 예정이며 두 개의 csv 파일이 주어진다. 각 csv 파일은 21개의 column으로 이루어져 있습니다.
++ 학습 데이터는 kaggle의 Datasets을 사용할 예정이며 두 개의 csv 파일이 주어집니다. 각 csv 파일은 21개의 column으로 이루어져 있습니다.
 
 ## III. Methodology
 + Explaining your choice of algorithms (methods)
