@@ -55,7 +55,12 @@
           wifi              : WIFI 기능 제공여부 (0 or 1)
           price_range       : 해당 모바일 기기의 가격이 속한 범위
 
-![1](https://user-images.githubusercontent.com/91457152/204254565-88a3eca5-a554-4234-a0a3-01189147e02b.png)
+<img src="https://user-images.githubusercontent.com/91457152/204254565-88a3eca5-a554-4234-a0a3-01189147e02b.png"/>
+<img src="https://user-images.githubusercontent.com/91457152/204254747-8b28b429-51dc-4a12-a43b-0dfa68ad1d32.png"/>
+<img src="https://user-images.githubusercontent.com/91457152/204254754-a13768fe-4b87-465d-a703-065e8e3157de.png"/>
+<img src="https://user-images.githubusercontent.com/91457152/204254763-36faeb65-7615-415f-b2cc-7657fef26c22.png"/>
+<img src="https://user-images.githubusercontent.com/91457152/204254765-5f428ad8-6918-4e18-b06a-57e52442abf9.png"/>
+<img src="https://user-images.githubusercontent.com/91457152/204254767-60e7d04c-eea4-48dc-ae8f-4351d54119cb.png"/>
 
 
 ## III. Methodology
