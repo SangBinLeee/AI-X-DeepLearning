@@ -1,7 +1,6 @@
 # AI-X-DeepLearning
-### Assign Project 1
 
-### Title: 
+### Title: Mobile Price Classification
 
 ### Members: 
           이상빈, 건설환경공학과, lsb10a@naver.com
