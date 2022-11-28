@@ -5,8 +5,8 @@
 
 ### Members: 
           이상빈, 건설환경공학과, lsb10a@naver.com
-          최영우, 기계공학부,
-          황환이, 기계공학부,
+          최영우, 기계공학부, woo970908@naver.com
+          황환이, 기계공학부, asa517@hanyang.ac.kr
 
 
 ## Index
