@@ -20,14 +20,15 @@
 + Motivation: 
 
    AI를 처음 다루어보는 팀원들이 모여 예측을 하는 Deep Learning Model을 
-  만들어 보고자 기본적인 Classification을 경험해보고자 했습니다. 이에 
-  따른 기본기를 익힐 수 있는 알고리즘을 사용해 보려고 합니다.
+  만들어 보고자 기본적인 Classification을 경험해보고자 했습니다.Classification에는 여러 기법들이 있지만 그 중 저희 팀은 Decision tree와 Random forest 알고리즘에 대해
+  학습하였고 어느 알고리즘의 성능이 더 좋은 지 확인해보기 위해 하나의 예제를 통해 비교해보고자 하였습니다.또, n_estimator, max_depth, feature 갯수 등에 따라 알고리즘의 성능이
+  바뀐다는 것을 알게 되었고 실제 '기기 스펙을 통한 모바일 기기 가격 예측' 이라는 예제를 통하여 이를 보여주고자 하였습니다. 
 
 + What do you want to see at the end?
 
-   여러 성능과 모바일 기기의 스펙을 통해 가격을 일정한 간격으로 나눈 후에
-  이를 예측하는 분류 학습을 진행할 예정입니다.
-
+  Decision tree와 Random forest를 정확도로 비교하여 어느 알고리즘의 성능이 더 좋은지 보여줄 것입니다. 또, 반복문을 통한 비교를 통해 Estimator, max_depth 등의 최적의 변수를 찾아 
+  이를 적용시켜 학습 시킬 예정이며 최종적으로 모바일 기기의 여러 스펙 중 feature importance가 높은 feature를 추출하여 모바일 기기의 가격을 예측하는 분류 학습을 진행할 예정입니다.
+  추가적으로 몇개의 feature를 추출하여 학습시키는 것이 가장 좋은 성능을 가지는지에 대한 고찰을 할 계획입니다.
 ## II. Datasets
 + https://www.kaggle.com/datasets/iabhishekofficial/mobile-price-classification
 + 학습 데이터는 kaggle의 Datasets을 사용할 예정이며 두 개의 csv 파일이 주어지지만, test.csv에는 정답값이 정해져 있지 않아 train.csv만 사용할 예정입니다. 각 csv 파일은 20개의 Column으로 이루어져 있습니다. 색인을 포함하여 총 21개의 Column을 가지게 됩니다. 각각의 Column은 다음과 같습니다.
