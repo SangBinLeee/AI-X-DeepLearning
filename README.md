@@ -28,7 +28,7 @@
 
   Decision tree와 Random forest를 정확도로 비교하여 어느 알고리즘의 성능이 더 좋은지 보여줄 것입니다. 또, 반복문을 통한 비교를 통해 Estimator, max_depth 등의 최적의 변수를 찾아 
   이를 적용시켜 학습 시킬 예정이며 최종적으로 모바일 기기의 여러 스펙 중 feature importance가 높은 feature를 추출하여 모바일 기기의 가격을 예측하는 분류 학습을 진행할 예정입니다.
-  추가적으로 몇개의 feature를 추출하여 학습시키는 것이 가장 좋은 성능을 가지는지에 대한 고찰을 할 계획입니다.
+  최종적으로 소비자가 모바일 기기를 구매할 때, 가격을 예측하기 위해 어느 기능을 고려해야 합리적인 가격 예측에 도움이 되는 지에 대한 기준을 정립할 계획입니다.
 ## II. Datasets
 + https://www.kaggle.com/datasets/iabhishekofficial/mobile-price-classification
 + 학습 데이터는 kaggle의 Datasets을 사용할 예정이며 두 개의 csv 파일이 주어지지만, test.csv에는 정답값이 정해져 있지 않아 train.csv만 사용할 예정입니다. 각 csv 파일은 20개의 Column으로 이루어져 있습니다. 색인을 포함하여 총 21개의 Column을 가지게 됩니다. 각각의 Column은 다음과 같습니다.
