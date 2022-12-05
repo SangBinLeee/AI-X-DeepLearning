@@ -163,6 +163,153 @@
 ## IV. Evaluation & Analysis
 + Graphs, tables, any statistics (if any)
 
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix
+from sklearn.model_selection import GridSearchCV
+```
+
+```python
+train = pd.read_csv("train.csv")
+train.head()
+```
+	battery_power	blue	clock_speed	dual_sim	fc	four_g	int_memory	m_dep	mobile_wt	n_cores	...	px_height	px_width	ram	sc_h	sc_w	talk_time	three_g	touch_screen	wifi	price_range
+0	842	0	2.2	0	1	0	7	0.6	188	2	...	20	756	2549	9	7	19	0	0	1	1
+1	1021	1	0.5	1	0	1	53	0.7	136	3	...	905	1988	2631	17	3	7	1	1	0	2
+2	563	1	0.5	1	2	1	41	0.9	145	5	...	1263	1716	2603	11	2	9	1	1	0	2
+3	615	1	2.5	0	0	0	10	0.8	131	6	...	1216	1786	2769	16	8	11	1	0	0	2
+4	1821	1	1.2	0	13	1	44	0.6	141	2	...	1208	1212	1411	8	2	15	1	1	0	1
+5 rows × 21 columns
+
+```python
+train.info()
+```
+```
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 2000 entries, 0 to 1999
+Data columns (total 21 columns):
+ #   Column         Non-Null Count  Dtype  
+---  ------         --------------  -----  
+ 0   battery_power  2000 non-null   int64  
+ 1   blue           2000 non-null   int64  
+ 2   clock_speed    2000 non-null   float64
+ 3   dual_sim       2000 non-null   int64  
+ 4   fc             2000 non-null   int64  
+ 5   four_g         2000 non-null   int64  
+ 6   int_memory     2000 non-null   int64  
+ 7   m_dep          2000 non-null   float64
+ 8   mobile_wt      2000 non-null   int64  
+ 9   n_cores        2000 non-null   int64  
+ 10  pc             2000 non-null   int64  
+ 11  px_height      2000 non-null   int64  
+ 12  px_width       2000 non-null   int64  
+ 13  ram            2000 non-null   int64  
+ 14  sc_h           2000 non-null   int64  
+ 15  sc_w           2000 non-null   int64  
+ 16  talk_time      2000 non-null   int64  
+ 17  three_g        2000 non-null   int64  
+ 18  touch_screen   2000 non-null   int64  
+ 19  wifi           2000 non-null   int64  
+ 20  price_range    2000 non-null   int64  
+dtypes: float64(2), int64(19)
+memory usage: 328.2 KB
+```
+
+```python
+origin_feature = train.drop('price_range')
+target = train['price_range']
+
+x_train, x_test, y_train, y_test = train_test_split(origin_feature, target, test_size = 0.3)
+```
+
+```python
+params = {
+    'max_depth': [8, 10, 12, 16],
+    'n_estimators': [250, 500, 750, 1000],
+    'min_samples_split': [8, 12]
+}
+
+rf_model = RandomForestClassifier(random_state = 13, n_jobs = -1)
+grid_cv = GridSearchCV(rf_model, param_grid = params, cv = 2, n_jobs = -1)
+grid_cv.fit(x_train, y_train)
+```
+
+```python
+cv_results = pd.DataFrame(grid_cv.cv_results_)
+cv_results.columns
+```
+```
+Index(['mean_fit_time', 'std_fit_time', 'mean_score_time', 'std_score_time',
+       'param_max_depth', 'param_min_samples_split', 'param_n_estimators',
+       'params', 'split0_test_score', 'split1_test_score', 'mean_test_score',
+       'std_test_score', 'rank_test_score'],
+      dtype='object')
+```
+```python
+target_col = ['rank_test_score', 'mean_test_score', 'param_n_estimators', 'param_max_depth']
+cv_results[target_col].sort_values('rank_test_score').head()
+```
+
+|index|rank_test_score|mean_test_score|param_n_estimators|param_max_depth|
+|---|---|---|---|---|
+|11|1|0.856429|1000|10|
+|2|2|0.854286|750|8|
+|19|2|0.854286|1000|12|
+|9|2|0.854286|500|10|
+|3|5|0.853571|1000|8|
+
+```python
+print(grid_cv.best_params_)
+print(grid_cv.best_score_)
+```
+```
+{'max_depth': 10, 'min_samples_split': 8, 'n_estimators': 1000}
+0.8564285714285714
+```
+
+```python
+best_data = grid_cv.best_estimator_
+best_data.fit(x_train, y_train.values.reshape(-1, ))
+
+pred1 = best_data.predict(x_test)
+
+accuracy_score(y_test, pred1)
+```
+```
+0.87
+```
+
+```python
+best_cols_values = best_data.feature_importances_
+best_cols = pd.Series(best_cols_values, index = x_train.columns)
+top8_cols = best_cols.sort_values(ascending=False)[:8]
+top8_cols
+```
+```
+ram              0.555619
+battery_power    0.075832
+px_width         0.053679
+px_height        0.052308
+mobile_wt        0.034910
+int_memory       0.032589
+talk_time        0.025553
+sc_w             0.022609
+dtype: float64
+```
+
+```python
+plt.figure(figsize = (8, 8))
+sns.barplot(x = top8_cols, y = top8_cols.index)
+plt.show()
+```
+
+
 ## V. Related Work (e.g., existing studies)
 + Tools, libraries, blogs, or any documentation that you have used to do this project.
 https://ratsgo.github.io/machine%20learning/2017/03/26/tree/
