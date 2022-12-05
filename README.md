@@ -30,7 +30,7 @@
 
 ## II. Datasets
 + https://www.kaggle.com/datasets/iabhishekofficial/mobile-price-classification
-+ 학습 데이터는 kaggle의 Datasets을 사용할 예정이며 두 개의 csv 파일이 주어집니다. 각 csv 파일은 20개의 Column으로 이루어져 있습니다. 색인을 포함하여 총 21개의 Column을 가지게 됩니다. 각각의 Column은 다음과 같습니다.
++ 학습 데이터는 kaggle의 Datasets을 사용할 예정이며 두 개의 csv 파일이 주어지지만, test.csv에는 정답값이 정해져 있지 않아 train.csv만 사용할 예정입니다. 각 csv 파일은 20개의 Column으로 이루어져 있습니다. 색인을 포함하여 총 21개의 Column을 가지게 됩니다. 각각의 Column은 다음과 같습니다.
 
           battery_power     : 배터리가 한번에 저장할 수 있는 총에너지 양 (mAh)
           blue              : Bluetooth 기능의 제공여부 (0 or 1)
