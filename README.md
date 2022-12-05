@@ -166,4 +166,9 @@
 + Tools, libraries, blogs, or any documentation that you have used to do this project.
 https://ratsgo.github.io/machine%20learning/2017/03/26/tree/
 https://www.tibco.com/ko/reference-center/what-is-a-random-forest
+
++ Dataset: kaggle, https://www.kaggle.com/datasets/iabhishekofficial/mobile-price-classification
++ Theory: 
++ Codes: AI+X: Machine Learning
+
 ## VI. Conclusion: Discussion
