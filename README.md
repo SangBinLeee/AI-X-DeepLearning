@@ -308,7 +308,7 @@ plt.figure(figsize = (8, 8))
 sns.barplot(x = top8_cols, y = top8_cols.index)
 plt.show()
 ```
-
+![image](https://user-images.githubusercontent.com/91457152/205852440-06eca3f5-2ff4-452b-a656-79a2f845153a.png)
 
 ## V. Related Work (e.g., existing studies)
 + Tools, libraries, blogs, or any documentation that you have used to do this project.
