@@ -328,7 +328,7 @@ accuracy_score(y_test, pred1_re)
 conf_matrix = pd.DataFrame(confusion_matrix(y_test, pred1_re))
 sns.heatmap(conf_matrix, annot = True, fmt = 'd', linewidths = 2, cmap = 'Blues')
 ```
-![image]
+![image](https://user-images.githubusercontent.com/91457152/205853406-58c37ca0-7024-4f7d-91d7-2cbea5d77208.png)
 
 ```python
 top6_cols = best_cols.sort_values(ascending=False)[:6]
