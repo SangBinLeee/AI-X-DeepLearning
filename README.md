@@ -310,6 +310,68 @@ plt.show()
 ```
 ![image](https://user-images.githubusercontent.com/91457152/205852440-06eca3f5-2ff4-452b-a656-79a2f845153a.png)
 
+```python
+x_train_re = x_train[top8_cols.index]
+x_test_re = x_test[top8_cols.index]
+
+rf_model_re = grid_cv.best_estimator_
+rf_model_re.fit(x_train_re, y_train.values.reshape(-1, ))
+
+pred1_re = rf_model_re.predict(x_test_re)
+
+accuracy_score(y_test, pred1_re)
+```
+```
+0.88
+```
+```python
+conf_matrix = pd.DataFrame(confusion_matrix(y_test, pred1_re))
+sns.heatmap(conf_matrix, annot = True, fmt = 'd', linewidths = 2, cmap = 'Blues')
+```
+![image]
+
+```python
+top6_cols = best_cols.sort_values(ascending=False)[:6]
+top4_cols = best_cols.sort_values(ascending=False)[:4]
+top3_cols = best_cols.sort_values(ascending=False)[:3]
+```
+```python
+x_train_re = x_train[top6_cols.index]
+x_test_re = x_test[top6_cols.index]
+
+rf_model_re = grid_cv.best_estimator_
+rf_model_re.fit(x_train_re, y_train.values.reshape(-1, ))
+
+pred1_re = rf_model_re.predict(x_test_re)
+
+accuracy_score(y_test, pred1_re)
+
+x_train_re = x_train[top4_cols.index]
+x_test_re = x_test[top4_cols.index]
+
+rf_model_re = grid_cv.best_estimator_
+rf_model_re.fit(x_train_re, y_train.values.reshape(-1, ))
+
+pred1_re = rf_model_re.predict(x_test_re)
+
+accuracy_score(y_test, pred1_re)
+
+x_train_re = x_train[top3_cols.index]
+x_test_re = x_test[top3_cols.index]
+
+rf_model_re = grid_cv.best_estimator_
+rf_model_re.fit(x_train_re, y_train.values.reshape(-1, ))
+
+pred1_re = rf_model_re.predict(x_test_re)
+
+accuracy_score(y_test, pred1_re)
+```
+```
+0.8983333333333333
+0.905
+0.865
+
+
 ## V. Related Work (e.g., existing studies)
 + Tools, libraries, blogs, or any documentation that you have used to do this project.
 https://ratsgo.github.io/machine%20learning/2017/03/26/tree/
