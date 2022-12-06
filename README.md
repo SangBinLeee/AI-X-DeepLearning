@@ -230,6 +230,78 @@ target = train['price_range']
 
 x_train, x_test, y_train, y_test = train_test_split(origin_feature, target, test_size = 0.3)
 ```
+# 여기부터 DicisionTree
+```python
+params = {
+    'max_depth' : [ 6, 8 ,10, 12, 16 ,20, 24]
+}
+
+grid_cv = GridSearchCV(dt_clf, param_grid=params, scoring='accuracy', 
+                       cv=5, return_train_score=True)
+grid_cv.fit(x_train , y_train)
+```
+```
+GridSearchCV(cv=5,
+             estimator=DecisionTreeClassifier(max_depth=4, random_state=13),
+             param_grid={'max_depth': [6, 8, 10, 12, 16, 20, 24]},
+             return_train_score=True, scoring='accuracy')
+```
+```python
+cv_results_df = pd.DataFrame(grid_cv.cv_results_)
+cv_results_df.columns
+```
+```
+Index(['mean_fit_time', 'std_fit_time', 'mean_score_time', 'std_score_time',
+       'param_max_depth', 'params', 'split0_test_score', 'split1_test_score',
+       'split2_test_score', 'split3_test_score', 'split4_test_score',
+       'mean_test_score', 'std_test_score', 'rank_test_score',
+       'split0_train_score', 'split1_train_score', 'split2_train_score',
+       'split3_train_score', 'split4_train_score', 'mean_train_score',
+       'std_train_score'],
+      dtype='object')
+```
+```python
+grid_cv.best_score_
+```
+```
+0.8392857142857142
+````
+```python
+grid_cv.best_params_
+```
+```
+{'max_depth': 6}
+```
+```python
+max_depths = [ 6, 8 ,10, 12, 16 ,20, 24]
+
+for depth in max_depths:
+    dt_clf = DecisionTreeClassifier(max_depth=depth, random_state=156)
+    dt_clf.fit(x_train , y_train)
+    pred = dt_clf.predict(x_test)
+    accuracy = accuracy_score(y_test , pred)
+    print('Max_Depth =', depth, ', Accuracy =', accuracy)
+```
+```
+Max_Depth = 6 , Accuracy = 0.845
+Max_Depth = 8 , Accuracy = 0.8483333333333334
+Max_Depth = 10 , Accuracy = 0.8433333333333334
+Max_Depth = 12 , Accuracy = 0.8316666666666667
+Max_Depth = 16 , Accuracy = 0.8316666666666667
+Max_Depth = 20 , Accuracy = 0.8316666666666667
+Max_Depth = 24 , Accuracy = 0.8316666666666667
+```
+```python
+best_df_clf = grid_cv.best_estimator_
+pred1 = best_df_clf.predict(x_test)
+
+accuracy_score(y_test , pred1)
+```
+```
+0.845
+```
+
+# 여기부터 RandomForest
 
 ```python
 params = {
