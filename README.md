@@ -59,8 +59,6 @@
 
 
 ## III. Methodology
-+ Explaining your choice of algorithms (methods)
-+ Explaining features (if any)
 모델 소개
 
 로지스틱 회귀, 커널 기법, SVM(Support Vector Machine) 등 다양한 분류 기법이 있습니다.
@@ -161,7 +159,8 @@
 빠른 학습 속도
 랜덤 포레스트는 하위 집합 기능을 사용하기 때문에 수백 가지의 다양한 기능을 빠르게 평가할 수 있습니다. 즉 생성된 포레스트를 저장하고 향후 재사용할 수 있기 때문에 예측 속도도 다른 모델보다 빠르게 됩니다.
 ## IV. Evaluation & Analysis
-+ Graphs, tables, any statistics (if any)
+
+## - 데이터 접근 및 학습 사전 준비
 
 ```python
 import pandas as pd
@@ -180,6 +179,7 @@ from sklearn.tree import DecisionTreeClassifier
 train = pd.read_csv("train.csv")
 train.head()
 ```
+
 |index|battery_power|blue|clock_speed|dual_sim|fc|four_g|int_memory|m_dep|mobile_wt|n_cores|px_height|px_width|ram|sc_h|sc_w|talk_time|three_g|touch_screen|wifi|price_range|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 |0|842|0|2.2|0|1|0|7|0.6|188|2|20|756|2549|9|7|19|0|0|1|1|
@@ -223,6 +223,7 @@ Data columns (total 21 columns):
 dtypes: float64(2), int64(19)
 memory usage: 328.2 KB
 ```
+필요한 함수들을 불러온 후 정보가 담겨있는 CSV파일을 읽어 정보를 확인합니다. head()함수를 이용하여 데이터를 잘 읽었는지 확인 할 수 있으며 info()함수를 이용하여 결측값이 있는지 확인할 수 있습니다.
 
 ```python
 origin_feature = train.drop('price_range')
@@ -230,7 +231,9 @@ target = train['price_range']
 
 x_train, x_test, y_train, y_test = train_test_split(origin_feature, target, test_size = 0.3)
 ```
-# 여기부터 DicisionTree
+DataFrame의 마지막 열은 예측해야 할 target이므로 제외한 모든 열을 origin_feature에 할당하고 target에 마지막 열을 할당합니다.
+
+## - Dicision Tree
 ```python
 params = {
     'max_depth' : [ 6, 8 ,10, 12, 16 ,20, 24]
@@ -260,6 +263,7 @@ Index(['mean_fit_time', 'std_fit_time', 'mean_score_time', 'std_score_time',
        'std_train_score'],
       dtype='object')
 ```
+Dicision Tree의 하이퍼 파라미터의 최적값을 알아내기 위해 Grid Search를 활용하여 max_depth를 학습합니다. 결과에는 각 fold에 대한 train_score도 포함됩니다.
 ```python
 grid_cv.best_score_
 ```
@@ -272,6 +276,7 @@ grid_cv.best_params_
 ```
 {'max_depth': 6}
 ```
+결과에 따라 가장 최적화 된 max_depth는 6이고 이에 따른 정확도는 약 84%인 것을 확인할 수 있습니다.
 ```python
 max_depths = [ 6, 8 ,10, 12, 16 ,20, 24]
 
@@ -300,8 +305,11 @@ accuracy_score(y_test , pred1)
 ```
 0.845
 ```
+이를 확인해보고자 depth값을 변경해주면서 반복문을 돌려보면 max_depth = 6일 때, Accuracy는 84.5%로 가장 높은 것을 확인할 수 있습니다.
 
-# 여기부터 RandomForest
+## - Random Forest
+
+Decision Tree의 좋은 성능에도 불구하고 Random Forest Algorithm을 이용하는 이유는 주어진 데이터에서 학습에 방해를 줄만한 요소가 많기 때문입니다. target값을 제외한 19개의 열 중에서 boolean값을 가지는 열은 6개 입니다. 또한, 모바일 기기의 가격을 예측하는 데 있어서 유의미한 영향을 줄 수 없는 정보가 대부분입니다. 따라서 성능에 강한 영향을 주는 인자를 선택할 수 있게 Random Forest Algorithm을 사용하기로 결정하였습니다.
 
 ```python
 params = {
@@ -339,6 +347,8 @@ cv_results[target_col].sort_values('rank_test_score').head()
 |9|2|0.854286|500|10|
 |3|5|0.853571|1000|8|
 
+Dicision Tree와 같은 맥락으로 Grid Seerch를 활용하여 학습을 시킨 후 그 결과를 확인해보고자 합니다. 따라서 rank_test_score의 점수에 따라 오름차순으로 정렬한 후 상위 5개의 값들을 확인해 보았습니다.
+
 ```python
 print(grid_cv.best_params_)
 print(grid_cv.best_score_)
@@ -347,6 +357,7 @@ print(grid_cv.best_score_)
 {'max_depth': 10, 'min_samples_split': 8, 'n_estimators': 1000}
 0.8564285714285714
 ```
+가장 높은 점수를 받은 하이퍼 파라미터에 따른 점수입니다.
 
 ```python
 best_data = grid_cv.best_estimator_
@@ -359,6 +370,9 @@ accuracy_score(y_test, pred1)
 ```
 0.87
 ```
+그 결과를 이용하여 예측 정확도를 측정한 결과 87%의 결과를 얻을 수 있었습니다.
+
+Random Forest를 사용한 이유이기도 한 가장 중요한 Feature를 확인하여 이 값들을 이용하여 학습을 진행합니다.
 
 ```python
 best_cols_values = best_data.feature_importances_
@@ -385,6 +399,8 @@ plt.show()
 ```
 ![image](https://user-images.githubusercontent.com/91457152/205852440-06eca3f5-2ff4-452b-a656-79a2f845153a.png)
 
+주요 Feature의 영향력을 seaborn library를 활용하여 그려보았습니다.
+
 ```python
 x_train_re = x_train[top8_cols.index]
 x_test_re = x_test[top8_cols.index]
@@ -399,11 +415,6 @@ accuracy_score(y_test, pred1_re)
 ```
 0.88
 ```
-```python
-conf_matrix = pd.DataFrame(confusion_matrix(y_test, pred1_re))
-sns.heatmap(conf_matrix, annot = True, fmt = 'd', linewidths = 2, cmap = 'Blues')
-```
-![image](https://user-images.githubusercontent.com/91457152/205853406-58c37ca0-7024-4f7d-91d7-2cbea5d77208.png)
 
 ```python
 top6_cols = best_cols.sort_values(ascending=False)[:6]
@@ -446,6 +457,16 @@ accuracy_score(y_test, pred1_re)
 0.905
 0.865
 ```
+
+주요 인자들을 얼마나 사용하여야 가장 높은 정확도를 보이는 지 비교하기 위해서 상위 n개의 Feature를 이용하여 학습을 진행한 후 각각의 예측 정확도를 비교해봅니다. 가장 높은 정확도를 보이는 것은 상위 4개의 Feature를 사용하는 것이고 예측 결과를 Confusion Matrix로 표현해 보았습니다.
+
+```python
+conf_matrix = pd.DataFrame(confusion_matrix(y_test, pred1_re))
+sns.heatmap(conf_matrix, annot = True, fmt = 'd', linewidths = 2, cmap = 'Blues')
+```
+![image](https://user-images.githubusercontent.com/91457152/205853406-58c37ca0-7024-4f7d-91d7-2cbea5d77208.png)
+
+결과적으로 상위 4개 특성인 [Ram 성능, 배터리 성능, 모바일 기기의 가로 및 세로의 크기] 만을 이용하는 것이 정확도가 가장 높았습니다. 정확도는 90.5%로 Dicision Tree보다 높은 정확도를 나타내는 것으로 확인할 수 있고, 실제 모바일 기기의 가격대를 예측하는데 4가지 정보만 고려하는 것이 가장 정확할 것입니다.
 
 ## V. Related Work (e.g., existing studies)
 + Tools, libraries, blogs, or any documentation that you have used to do this project.
