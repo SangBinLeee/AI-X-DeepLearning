@@ -472,9 +472,9 @@ sns.heatmap(conf_matrix, annot = True, fmt = 'd', linewidths = 2, cmap = 'Blues'
 + Tools, libraries, blogs, or any documentation that you have used to do this project.
 https://ratsgo.github.io/machine%20learning/2017/03/26/tree/
 https://www.tibco.com/ko/reference-center/what-is-a-random-forest
-
+https://bioinformaticsandme.tistory.com/167
 + Dataset: kaggle, https://www.kaggle.com/datasets/iabhishekofficial/mobile-price-classification
-+ Theory: 
-+ Codes: AI+X: Machine Learning
++ Theory: https://eunsukimme.github.io/ml/2019/11/26/Random-Forest/
++ Codes: AI+X: Machine Learning, https://for-my-wealthy-life.tistory.com/15, https://alex-blog.tistory.com/entry/Machine-Learning-Random-Forest-%EB%9E%9C%EB%8D%A4-%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8A%B8-%EC%98%88%EC%8B%9C-feat-python, https://young2un.tistory.com/131
 
 ## VI. Conclusion: Discussion
