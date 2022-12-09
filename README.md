@@ -26,7 +26,7 @@
 
 + What do you want to see at the end?
 
-  Decision tree와 Random forest를 정확도로 비교하여 어느 알고리즘의 성능이 더 좋은지 보여줄 것입니다. 또, 반복문을 통한 비교를 통해 Estimator, max_depth 등의 최적의 변수를 찾아 
+  Decision tree와 Random forest를 정확도로 비교하여 어느 알고리즘의 성능이 더 좋은지 보여줄 것입니다. 또, Gridsearchcv의 모듈을 통해 Estimator, max_depth 등의 최적의 하이퍼파라미터를 찾아 
   이를 적용시켜 학습 시킬 예정이며 최종적으로 모바일 기기의 여러 스펙 중 feature importance가 높은 feature를 추출하여 모바일 기기의 가격을 예측하는 분류 학습을 진행할 예정입니다.
   최종적으로 소비자가 모바일 기기를 구매할 때, 가격을 예측하기 위해 어느 기능을 고려해야 합리적인 가격 예측에 도움이 되는 지에 대한 기준을 정립할 계획입니다.
 ## II. Datasets
