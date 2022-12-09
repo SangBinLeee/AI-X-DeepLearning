@@ -478,3 +478,10 @@ https://bioinformaticsandme.tistory.com/167
 + Codes: AI+X: Machine Learning, https://for-my-wealthy-life.tistory.com/15, https://alex-blog.tistory.com/entry/Machine-Learning-Random-Forest-%EB%9E%9C%EB%8D%A4-%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8A%B8-%EC%98%88%EC%8B%9C-feat-python, https://young2un.tistory.com/131
 
 ## VI. Conclusion: Discussion
+저희 팀은 Decision tree 와 Random forest에 대해 학습하였고 두 알고리즘에 대한 성능비교를 '기기 스펙을 통한 모바일 기기 가격 예측'의 예제를 통해 비교 하였습니다. 또, GridSearchCV 모듈을 통해 최적의 하이퍼 파라미터 값을 도출하였고 이를 알고리즘에 적용하여 학습을 진행하였습니다.
+Decision Tree 알고리즘에서 Max_depth에 대한 최적화를 진행하여 학습을 진행하였고 Max_depth=6 일 때, Accuracy=0.845 (=84.5%) 의 결과를 얻었습니다.
+Random Forest 알고리즘에서도 마찬가지로 Max_depth, m_estimaors, min_samples_split 에 대한 최적화를 각각 진행하였고 최적의 하이퍼 파라미터는 Max_depth=10, n_estimators=1000, min_samples_split=8 의 파라미터 값을 도출하여 Random Forest 알고리즘에 대한 학습을 진행하였습니다. 추가적으로 저희 팀은 Random Forest 알고리즘에서도 Feature importance에 따라 각 feature의 우선순위를 매겼으며 순위에 따른 feature의 개수를 다르게 적용하여 학습을 진행하였습니다. Feature를 1~8위, 1~6위 등 개수를 다르게 넣고 학습을 진행하였으며 그 결과, 1~4위 순위의 feature(ram=0.555619, battery_power=0.078532, px_width=0.053679, px_height=0.052308)를 넣고 학습을 진행 하였을 때, Accuracy=0.905 (=90.5%)의 가장 높은 정확도를 도출 하였습니다.
+
+위와 같은 예제를 통해 저희 팀은 
+1) Random Forest의 성능 (90.5%)이 Decision Tree의 성능(84.5%)보다 더 나은 정확도를 기록한 것을 알 수 있었습니다.
+2) 1~4순위 feature(ram=0.555619, battery_power=0.078532, px_width=0.053679, px_height=0.052308)를 활용하여 학습을 진행했을 때 가장 높은 정확도를 얻을 수 있었고 이러한 사실은 소비자가 모바일 기기를 구매 혹은 가격 예측을 할 때 고려해야할 기기 스펙에 대한 기준(Ram 성능, 배터리 성능, 모바일 기기의 가로 및 세로의 크기)을 제시하였습니다.  
