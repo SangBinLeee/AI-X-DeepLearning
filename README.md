@@ -488,5 +488,8 @@ Random Forest 알고리즘에서도 마찬가지로 Max_depth, m_estimaors, min_
 
 
 이상빈: Data Preprocessing, Graph Analysis, Code Implementation
+
 최영우: Theoretical Investigation, Code Implementation,Youtube Recording
+
 황환이: Blog Processing, Code Implementation, Youtube Recording
+
