@@ -134,7 +134,9 @@
 랜덤 포레스트가 제대로 작동하려면 다음 세 가지가 필요합니다.
 
 ● 모델이 추측만 하지 않도록 신호가 식별가능해야 합니다.
+
 ● 트리로 만든 예측은 다른 트리들과 상관 관계가 작아야 합니다.
+
 ● 어느 정도 예측력이 있는 기능에 대해 GI=GO여야 합니다.
 
 랜덤 포레스트의 이점
@@ -486,12 +488,11 @@ Random Forest 알고리즘에서도 마찬가지로 Max_depth, m_estimaors, min_
 1) Random Forest의 성능 (90.5%)이 Decision Tree의 성능(84.5%)보다 더 나은 정확도를 기록한 것을 알 수 있었습니다.
 2) 1~4순위 feature(ram=0.555619, battery_power=0.078532, px_width=0.053679, px_height=0.052308)를 활용하여 학습을 진행했을 때 가장 높은 정확도를 얻을 수 있었고 이러한 사실은 소비자가 모바일 기기를 구매 혹은 가격 예측을 할 때 고려해야할 기기 스펙에 대한 기준(Ram 성능, 배터리 성능, 모바일 기기의 가로 및 세로의 크기)을 제시하였습니다.  
 
-# Youtube link : https://www.youtube.com/watch?v=JHKJDk_3hbM
+
+## Youtube link : https://www.youtube.com/watch?v=JHKJDk_3hbM
 
 
-# 이상빈: Data Preprocessing, Graph Analysis, Code Implementation
-
-# 최영우: Theoretical Investigation, Code Implementation,Youtube Recording
-
-# 황환이: Blog Processing, Code Implementation, Youtube Recording
+### 이상빈: Data Preprocessing, Graph Analysis, Code Implementation
+### 최영우: Theoretical Investigation, Code Implementation,Youtube Recording
+### 황환이: Blog Processing, Code Implementation, Youtube Recording
 
